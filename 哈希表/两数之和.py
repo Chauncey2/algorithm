@@ -7,7 +7,7 @@
 @Version :   1.0
 '''
 """ 
-hash 表有三种
+使用集合做记录，两数之和问题就转换成了，在集合中寻找元素是否存在或者是否出现过
 """
 
 def function(nums:list[int],target:int)->list[int]:
@@ -22,7 +22,7 @@ def function(nums:list[int],target:int)->list[int]:
     record = dict()
     for i in range(len(nums)):
         need_num = target - nums[i]
-        if need_num in record.keys():
+        if need_num in record:
             return [record[need_num],i]
         record[nums[i]] = i
     return []
