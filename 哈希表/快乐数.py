@@ -20,12 +20,28 @@
 # 1^2 + 0^2 + 0^2 = 1
 
 def is_happy(nums:int)->int:
+    
     def get_sum(n):
         s = 0
         while n:
-           pass 
-                                                                                                     
+           number = n %10
+           s+= pow(number,2)
+           n = n // 10
+        return s
+    
+    res_set = set()
+    # 不断对传入的数字进行计算
+    while True:
+        nums = get_sum(nums)
+        print(nums)
+        if nums == 1:
+            return True
+        if nums in res_set:
+            return False
+        else:
+            res_set.add(nums)
+
 
 
 if __name__ == "__main__":
-    pass
+    print(is_happy(19))
