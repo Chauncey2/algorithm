@@ -24,16 +24,29 @@ class myQueue:
     
     def pop(self,val):
         # 如果滑动窗口移除的值比队首的小，则不需要做任何操作
-        pass
-    
+        if self.queue and val == self.queue[0]:
+            self.queue.popleft()
+        
     def front(self):
         # 返回当前chuang口的最大值
-        pass
+        return self.queue[0]
 
-def function(nums:list):
-    pass
-    
+def function(nums:list,k:int):
+    windows = myQueue()
+    ans = []
+    # 前k个值先入队列
+    for i in range(k):
+        windows.push(nums[i])
+    ans.append(windows.front())
+    for i in range(k,len(nums)):
+        # 每滑动一次就有一个元素出窗口(逻辑上，队列末尾的元素出队，但是原则上)
+        windows.pop(nums[i-k])
+        windows.push(nums[i])
+        ans.append(windows.front())
+    return ans
 
 
 if __name__ == "__main__":
-    pass
+    nums = [1,3,-1,-3,5,3,6,7]
+    k = 3
+    print(function(nums=nums,k=k))
