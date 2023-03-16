@@ -12,13 +12,13 @@
 # 原因就是，中序遍历迭代写法 ，节点的访问顺序和操作顺序不统一，需要另外借助指针
 
 
-
+from typing import List
 from . import BinaryTree
 from . import TreeNode
 
 class unificationTraversal(BinaryTree):
     """ 统一迭代法使用标记法，将前中后序方法的代码风格保持一致"""
-    def __init__(self, nodes: list[TreeNode]) -> None:
+    def __init__(self, nodes: List[TreeNode]) -> None:
         super().__init__(nodes)
     
     def preorder_traversal_iteration(root: TreeNode) -> list:
