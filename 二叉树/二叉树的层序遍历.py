@@ -6,12 +6,13 @@
 @Author  :   gaochangju 
 @Version :   1.0
 '''
+from typing import List # 参数注解
 from . import BinaryTree
 from . import TreeNode
 
 
 class BinaryTreelevleOrder(BinaryTree):
-    def __init__(self, ndoes: list) -> None:
+    def __init__(self, nodes:List[TreeNode]) -> None:
         super().__init__(nodes)
 
     def level_order(self, root: TreeNode) -> list:

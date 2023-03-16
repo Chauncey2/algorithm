@@ -9,7 +9,7 @@
 """ 
 二叉树的构造和一般通用函数定义
 """
-
+from typing import List
 
 class TreeNode:
     def __init__(self, value) -> None:
@@ -21,7 +21,7 @@ class TreeNode:
 class BinaryTree:
     """构造二叉树的函数"""
 
-    def __init__(self, nodes: list[TreeNode]) -> None:
+    def __init__(self, nodes: List[TreeNode]) -> None:
         self.root = None
         self.nums = 0  # 记录二叉树中节点个数
         self.heigh = 0  # 记录二叉树层高
