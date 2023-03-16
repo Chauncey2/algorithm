@@ -46,6 +46,7 @@ class BinaryTree:
             traversal(cur.right)
 
         return result
+
     def inorder_traversal(root: TreeNode) -> list:
         """二叉树的中序遍历递归写法
 
@@ -66,6 +67,7 @@ class BinaryTree:
             traversal(cur.right)
 
         return result
+
     def postorder_traversal(root: TreeNode) -> list:
         """二叉树的后序遍历递归写法
 
@@ -87,3 +89,80 @@ class BinaryTree:
 
         return result
 
+    def preorder_traversal_iteration(root: TreeNode) -> list:
+        """二叉树前序遍历迭代写法
+
+        Args:
+            root (TreeNode): 根节点
+
+        Returns:
+            list: 遍历结果
+        """
+        if root is None:
+            return []
+        stack = []
+        stack.append(root)
+        result = []
+        while len(stack):
+            node = stack.pop()  # 当前节点出栈
+            result.append(node.value)
+
+            if node.right:
+                stack.append(node.right)
+
+            if node.left:
+                stack.append(node.left)
+        return result
+
+    def inorder_traversal_iteration(root: TreeNode) -> list:
+        """二叉树中序遍历迭代写法
+        
+        Args:
+            root (TreeNode): 根节点
+
+        Returns:
+            list: 遍历结果
+        """
+        #  中序遍历的迭代写法借助了指针，不同于前序的迭代写法，
+        # 前序访问节点的顺序和操作节点的顺序是一致的
+        if root is None:
+            return []
+        stack = []
+        cur = root
+        result = []
+        while cur is not None or len(stack):
+            # 中序遍历是先找到左末尾叶子节点
+            if cur:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                # 当访问到最左侧叶子节点后，出栈顶元素访问
+                cur = stack.pop()
+                result.append(cur.value)
+                cur = cur.right
+        return result
+
+    def postorder_traversal_iteration(root: TreeNode) -> list:
+        """二叉树后序遍历迭代写法
+
+        Args:
+            root (TreeNode): 根节点
+
+        Returns:
+            list: 结果列表
+        """
+        if root is None:
+            return []
+
+        stack = []
+        stack.append(root)
+        result = []
+        while len(stack):
+            node = stack.pop()
+            result.append(node.value)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+
+        return result[::-1]
