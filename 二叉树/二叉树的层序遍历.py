@@ -10,3 +10,22 @@ from . import BinaryTree
 from . import TreeNode
 
 
+class BinaryTreelevleOrder(BinaryTree):
+    def __init__(self, ndoes: list) -> None:
+        super().__init__(nodes)
+
+    def level_order(self, root: TreeNode) -> list:
+        if root is None:
+            return []
+
+        queue = []
+        queue.append(root)
+        result = []
+        while queue:
+            node = queue.pop(0)  # 出队首元素
+            result.append(node.value)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        return result
