@@ -26,7 +26,7 @@ class BinaryTree:
         self.nums = 0  # 记录二叉树中节点个数
         self.heigh = 0  # 记录二叉树层高
 
-    def preorder_traversal(root: TreeNode) -> list:
+    def preorder_traversal(self,root: TreeNode) -> list:
         """二叉树前序遍历递归写法
 
         Args:
@@ -47,7 +47,7 @@ class BinaryTree:
 
         return result
 
-    def inorder_traversal(root: TreeNode) -> list:
+    def inorder_traversal(self,root: TreeNode) -> list:
         """二叉树的中序遍历递归写法
 
         Args:
@@ -68,7 +68,7 @@ class BinaryTree:
 
         return result
 
-    def postorder_traversal(root: TreeNode) -> list:
+    def postorder_traversal(self,root: TreeNode) -> list:
         """二叉树的后序遍历递归写法
 
         Args:
@@ -89,7 +89,7 @@ class BinaryTree:
 
         return result
 
-    def preorder_traversal_iteration(root: TreeNode) -> list:
+    def preorder_traversal_iteration(self,root: TreeNode) -> list:
         """二叉树前序遍历迭代写法
 
         Args:
@@ -114,7 +114,7 @@ class BinaryTree:
                 stack.append(node.left)
         return result
 
-    def inorder_traversal_iteration(root: TreeNode) -> list:
+    def inorder_traversal_iteration(self,root: TreeNode) -> list:
         """二叉树中序遍历迭代写法
         
         Args:
@@ -142,7 +142,7 @@ class BinaryTree:
                 cur = cur.right
         return result
 
-    def postorder_traversal_iteration(root: TreeNode) -> list:
+    def postorder_traversal_iteration(self,root: TreeNode) -> list:
         """二叉树后序遍历迭代写法
 
         Args:
@@ -166,3 +166,7 @@ class BinaryTree:
                 stack.append(node.right)
 
         return result[::-1]
+
+    def build_binary_tree(self,nums:list):
+        """ 构造二叉树 """
+        
