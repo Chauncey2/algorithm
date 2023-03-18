@@ -23,11 +23,12 @@ from . import TreeNode
 
 
 class Solution:
-    # todo: 获取最小深度的递归法需要仔细研究一下
+    # todo: 获取最小深度的递归法需要仔细研究一下，递归的写法足够抽象
     def get_min_depth_recursion(self, root: TreeNode, depth: int) -> int:
         # 使用后续遍历
         if not root:
             return 0
+        # 如果遇到叶子节点，则向上返回，跳过这个分支则表示该节点非叶子节点，切至少有一个叶子节点
         if not root.left and not root.right:
             return 1
         min_depth = 10**9 # 定义一个足够大的变量，起到占位符的作用，
