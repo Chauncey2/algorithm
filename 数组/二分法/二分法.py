@@ -22,7 +22,7 @@ def func1(nums:list,target:int) -> int:
     while left <= right:
         # python3中需要使用地板除
         # middle = (left + right) // 2
-        middle = left + (right - left ) // 2
+        middle = left + (right - left ) // 2 # 防止溢出
         if nums[middle] > target:
             right = middle -1
         elif nums[middle] < target:
@@ -33,7 +33,9 @@ def func1(nums:list,target:int) -> int:
     return -1
 
 def func2(nums:list,target:int) -> int:
-    """开区间二分法表示"""
+    """开区间二分法表示
+    开区间二分法 和闭区间二分法的区别之一就是右指针的初始值不同
+    """
     left = 0
     right = len(nums)
     while left < right:
