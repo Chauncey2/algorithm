@@ -130,7 +130,7 @@ class BinaryTree:
         stack = []
         cur = root
         result = []
-        while cur is not None or len(stack):
+        while cur or len(stack):
             # 中序遍历是先找到左末尾叶子节点
             if cur:
                 stack.append(cur)
