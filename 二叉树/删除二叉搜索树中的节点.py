@@ -55,7 +55,7 @@ class Solution:
     
     def delete_node_iteration(self,root:TreeNode,k:int)->TreeNode:
         """使用迭代法删除bst中的节点
-
+        迭代法的步骤分为两步骤:第一步，将左子树和右子树连接，第二步，将右子树和父节点连接起来
         Args:
             root (TreeNode): bst根节点
             k (int): 待删除的节点值
@@ -63,6 +63,38 @@ class Solution:
         Returns:
             TreeNode: 删除后的根节点
         """
+        if not root:
+            return root
+        p = root
+        last = None  # last 节点是用来保存待删除节点的父节点
+        while p:
+            if p.value == k:
+                if p.right:
+                    if p.left: # 左右子树都不为空
+                        node = p.right
+                        while node.left:
+                            node = node.left
+                        node.left = p.left 
+                    right = p.right
+                else:
+                    right = p.left
+                
+                if last is None:
+                    last = right # 删除的节点是原bst的根节点
+                elif last.value >k:
+                    last.left = right
+                elif last.value <k:
+                    last.right = right
+                # 节点删除已经连接，返回
+                break
+            else:
+                last = p
+                if p.value > k:
+                    p = p.left
+                else:
+                    p = p.right
+        
+        return root
         
             
     
