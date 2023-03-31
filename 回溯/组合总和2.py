@@ -50,8 +50,8 @@ class Solution:
     def combination_sum(self, candidates: List[int], target: int) -> List[int]:
         if not len(candidates):
             return []
-        self.path =[]
-        self.results=[]
+        self.path = []
+        self.results = []
         self.usage_list = [False] * len(candidates)
         # 数组提前排序
         candidates.sort()
@@ -68,7 +68,7 @@ class Solution:
             # 剪枝
             if _sum + candidates[i] > target:
                 return
-           
+
             # 去除同一层的重复元素
             if i > start_index and candidates[i] == candidates[i-1] and self.usage_list[i-1] == False:
                 continue
@@ -80,33 +80,33 @@ class Solution:
             _sum -= candidates[i]
             self.path.pop()
             self.usage_list[i] = False  # 告诉同一层，这个元素用过了
-            
-    def backtracking(self,candidates:List[int],target:int,_sum:int,start_index)->None:
+
+    def backtracking(self, candidates: List[int], target: int, _sum: int, start_index) -> None:
         """不适用usage_list的实现"""
-        
+
         if _sum == target:
             self.results.append(self.path[:])
             return
-        for i in range(start_index,len(candidates)):
+        for i in range(start_index, len(candidates)):
             # 剪枝操作放在for循环内部，省去了一步递归操作
-            if _sum + candidates[i] >target:
+            if _sum + candidates[i] > target:
                 return
             if i > start_index and candidates[i] == candidates[i-1]:
                 continue
             _sum += candidates[i]
             self.path.append(candidates[i])
-            self.backtracking(candidates,target,_sum,i+1)
+            self.backtracking(candidates, target, _sum, i+1)
             # 回溯
             _sum -= candidates[i]
             self.path.pop()
-            
-    def combination_sum2(self,candidates:List[int],target:int)->List[int]:
+
+    def combination_sum2(self, candidates: List[int], target: int) -> List[int]:
         if not len(candidates):
             return []
-        self.path=[]
-        self.results=[]
+        self.path = []
+        self.results = []
         candidates.sort()
-        self.backtracking(candidates,target,0,0)
+        self.backtracking(candidates, target, 0, 0)
         return self.results
 
 
@@ -114,4 +114,4 @@ if __name__ == "__main__":
     candidates = [10, 1, 2, 7, 6, 1, 5]
     target = 8
     print(Solution().combination_sum(candidates, target))
-    print(Solution().combination_sum2(candidates,target))
+    print(Solution().combination_sum2(candidates, target))
